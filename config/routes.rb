@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   get 'sessions/new'
+  get 'calendar/show'
+  resource :calendar, only: [:show], controller: :calendar
 
    # You can have the root of your site routed with "root"
   root             'static_pages#home'
+  get 'calendar' => 'calendar#show'
+  get 'addevent' => 'events#new'
   get 'help'    => 'static_pages#help'
   get 'about'   => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
@@ -11,6 +15,7 @@ Rails.application.routes.draw do
   post 'login'   => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users
+  resources :events
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
