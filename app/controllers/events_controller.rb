@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
   
+  before_filter :require_login
+
   def show
-    @user = Event.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
   def new
@@ -9,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.build(event_params)
     if @event.save
       redirect_to @event
 
@@ -22,5 +24,10 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:name, :date, :time,
                                    :location)
+    end
+    def require_login
+      unless current_user
+        redirect_to login_path
+      end
     end
 end
