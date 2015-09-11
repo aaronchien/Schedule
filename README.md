@@ -1,6 +1,3 @@
-Ruby on Rails Tutorial: sample application
-
-This is the sample application for the
-[*Ruby on Rails Tutorial:
-Learn Web Development with Rails*](http://www.railstutorial.org/)
-by [Michael Hartl](http://www.michaelhartl.com/).
+WhatsMySchedule
+http://whatsmyschedule.herokuapp.com/
+A Ruby on Rails web application that enables a user to keep track of their day to day schedule with a personal calendar that could be filled with various events
